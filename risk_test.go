@@ -11,9 +11,9 @@ import (
 )
 
 func init() {
-	_ = dice.Table(dice.D6(), 1)
-	_ = dice.Table(dice.D6(), 2)
-	_ = dice.Table(dice.D6(), 3)
+	_, _ = dice.NewTable(dice.New(dice.D6()))
+	_, _ = dice.NewTable(dice.New(dice.D6(), dice.D6(), dice.D6()))
+	_, _ = dice.NewTable(dice.New(dice.D6(), dice.D6()))
 }
 
 var comparetests = []struct {

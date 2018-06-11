@@ -13,20 +13,17 @@ const Delim = ","
 
 // loadRolls loads a roll table from path
 func loadRolls(n int) []string {
-	rolls := dice.Table(dice.D6(), n)
-	i := -1
-	for j, name := range rolls[0] {
-		if name == "State" {
-			i = j
-			break
-		}
+	d := make([]dice.Die, n)
+	for i := 0; i < n; i++ {
+		d[i] = dice.D6()
 	}
-	if i == -1 {
-		panic("State not found.")
+	rolls, err := dice.NewTable(d)
+	if err != nil {
+		panic(err) // TODO: Fix
 	}
 	var out []string
-	for _, s := range rolls[1:] {
-		out = append(out, s[i])
+	for _, s := range rolls.Data {
+		out = append(out, s[0])
 	}
 	return out
 }
