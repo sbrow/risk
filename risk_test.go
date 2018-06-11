@@ -6,14 +6,21 @@ import (
 	"sort"
 	"testing"
 	"time"
+
+	"github.com/sbrow/prob/dice"
 )
+
+func init() {
+	_ = dice.Table(dice.D6(), 1)
+	_ = dice.Table(dice.D6(), 2)
+	_ = dice.Table(dice.D6(), 3)
+}
 
 var comparetests = []struct {
 	att  int
 	def  int
 	want string
 }{
-	{2, 1, "0.5787 0.0000 0.4213"},
 	{2, 1, "0.5787 0.0000 0.4213"},
 	{3, 1, "0.6597 0.0000 0.3403"},
 	{2, 2, "0.2276 0.3241 0.4483"},
