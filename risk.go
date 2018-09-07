@@ -19,7 +19,7 @@ func loadRolls(n int) []string {
 	}
 	rolls, err := dice.NewTable(d)
 	if err != nil {
-		panic(err) // TODO: Fix
+		panic(err) // TODO(sbrow): Fix
 	}
 	var out []string
 	for _, s := range rolls.Data {
@@ -41,7 +41,7 @@ func sortRoll(s string) string {
 
 // Compare enumerates the results of a combat.
 //
-// TODO: Rename
+// TODO(sbrow): Rename
 func Compare(atk, def int, mods ...string) (win, tie, loss float64) {
 	if atk < 1 || def < 1 {
 		return

@@ -26,7 +26,7 @@ func (n *node) Report(short bool) string {
 }
 
 func (n *node) walk() []float64 {
-	// TODO: Fix
+	// TODO(sbrow): Fix
 	var ch = make(chan []int, 1000)
 	for i, node := range n.edges {
 		if node != nil {
@@ -92,9 +92,9 @@ func new(att, def int, oneDef bool, mods ...string) *node {
 	switch {
 	case att >= 2 && def >= 2 && !oneDef:
 		n.edges = []*edge{
-			&edge{node: new(att, def-2, oneDef, mods...), p: win},
-			&edge{node: new(att-1, def-1, oneDef, mods...), p: tie},
-			&edge{node: new(att-2, def, oneDef, mods...), p: loss},
+			{node: new(att, def-2, oneDef, mods...), p: win},
+			{node: new(att-1, def-1, oneDef, mods...), p: tie},
+			{node: new(att-2, def, oneDef, mods...), p: loss},
 		}
 	default:
 		n.edges = []*edge{nil, nil}
